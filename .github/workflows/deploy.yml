@@ -5,8 +5,19 @@ on:
         branches: ["main"]
 
 jobs:
-    deploy:
+    deploy-react:
         runs-on: ubuntu-latest
         steps:
-            - name: Teste
-              run: echo "Testando GitHub Actions"
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Iniciando o deploy
+              run: echo "Iniciando o deploy"
+            
+            - name: Configurando o Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            
+            - name: Build da aplicação
+              run: npm run build
