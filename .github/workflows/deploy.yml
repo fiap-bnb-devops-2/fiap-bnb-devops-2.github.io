@@ -13,11 +13,17 @@ jobs:
 
             - name: Iniciando o deploy
               run: echo "Iniciando o deploy"
-            
+              
             - name: Configurando o Node
               uses: actions/setup-node@v4
               with:
                 node-version: 18
             
+            - name: Instalação das dependências
+              run: npm install
+            
             - name: Build da aplicação
               run: npm run build
+
+            - name: Listando pastas da máquina virtual
+              run: ls
