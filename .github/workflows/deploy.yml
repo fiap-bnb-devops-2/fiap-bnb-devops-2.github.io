@@ -4,14 +4,11 @@ on:
     push:
         branches: ["main"]
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 jobs:
     deploy-react:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -33,15 +30,8 @@ jobs:
             - name: Listando pastas da máquina virtual
               run: ls
 
-            - name: Setup Pages
-              uses: actions/configure-pages@v5
-
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
+            - name: Deploy para o GitHub Pages
+              uses: peaceiris/actions-gh-pages@v4
               with:
-                # Upload entire repository
-                path: './production-build'
-
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./production-build
