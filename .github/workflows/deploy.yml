@@ -27,3 +27,9 @@ jobs:
 
             - name: Listando pastas da máquina virtual
               run: ls
+
+            - name: Deploy para o GitHub Pages
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./production-build
