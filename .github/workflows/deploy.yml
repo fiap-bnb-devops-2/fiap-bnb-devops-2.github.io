@@ -1,37 +1,42 @@
 name: Deploy React GitHub Actions
 
 on:
-    push:
-        branches: ["main"]
+  push:
+    branches: ["main"]
 
 jobs:
-    deploy-react:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+  deploy-react:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Iniciando o deploy
-              run: echo "Iniciando o deploy"
+      - name: Iniciando o deploy
+        run: echo "Iniciando o deploy"
               
-            - name: Configurando o Node
-              uses: actions/setup-node@v4
-              with:
-                node-version: 18
+      - name: Configurando o Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
             
-            - name: Instalação das dependências
-              run: npm install
+      - name: Instalação das dependências
+        run: npm install
             
-            - name: Build da aplicação
-              run: npm run build
+      - name: Build da aplicação
+        run: npm run build
 
-            - name: Listando pastas da máquina virtual
-              run: ls
+      - name: Listando pastas da máquina virtual
+        run: ls
 
-            - name: Deploy para o GitHub Pages
-              uses: peaceiris/actions-gh-pages@v4
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: ./production-build
+      - name: Configurar o Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload do artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './production-build'
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
