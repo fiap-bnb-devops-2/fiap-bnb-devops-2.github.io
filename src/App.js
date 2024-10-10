@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Deploy automático na Netlify e no GitHub Pages!!!
+          Testando a atualização na AWS
         </p>
 
         <a
