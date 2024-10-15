@@ -1,0 +1,10 @@
+name: Deploy to AWS
+on:
+    push:
+        branches: [main]
+jobs:
+    react-app-aws:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Confirmando início da execução
+              run: echo "Testando novo deploy"
