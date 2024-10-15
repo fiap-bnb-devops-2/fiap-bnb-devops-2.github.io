@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Testando a atualização na AWS
+          Testando a atualização na AWS por meio do GitHub Actions
         </p>
 
         <a
