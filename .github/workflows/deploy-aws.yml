@@ -9,8 +9,22 @@ jobs:
             - name: Confirmando início da execução
               run: echo "Testando novo deploy"
 
-            - name: Instalação das dependências
-              run: npm install
+            - name: Testando ssh remote commands
+              uses: appleboy/ssh-action@v1.1.0
+              with:
+                host: ${{ secrets.SSH_HOST }}
+                username: ${{ secrets.SSH_USERNAME }}
+                key: ${{ secrets.SSH_KEY }}
+                script: cd /var/www/react-app/ && ls
+
+            # - name: Baixar alterações do GitHub
+            #   run: sudo git pull origin main
+
+            # - name: Instalar as dependências
+            #   run: sudo npm install
             
-            - name: Build da aplicação
-              run: npm run build
+            # - name: Realizar build da aplicação
+            #   run: sudo npm run build
+
+            # - name: Reiniciar o PM2
+            #   run: sudo pm2 restart react-app
