@@ -1,4 +1,4 @@
-name: Deploy React GitHub Actions
+name: Deploy React GitHub Pages
 
 on:
   push:

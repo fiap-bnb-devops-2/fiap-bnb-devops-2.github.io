@@ -8,3 +8,9 @@ jobs:
         steps:
             - name: Confirmando início da execução
               run: echo "Testando novo deploy"
+
+            - name: Instalação das dependências
+              run: npm install
+            
+            - name: Build da aplicação
+              run: npm run build

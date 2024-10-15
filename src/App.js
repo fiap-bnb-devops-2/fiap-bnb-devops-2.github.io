@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Aprenda DevOps
+          Aprenda DevOps na Hcode
         </a>
       </header>
     </div>
